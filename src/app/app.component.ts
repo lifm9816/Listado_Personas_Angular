@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Persona } from './persona.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Listado-Personas';
+  title = 'Listado de Personas';
+  
+  personas: Persona[] = [
+    new Persona("Amy", "Martínez"),
+    new Persona("Luis", "Martínez"),
+    new Persona("César Elías", "Martínez")];
+
+    personaAgregada(persona: Persona)
+    {
+      this.personas.push(persona);
+    }
 }
