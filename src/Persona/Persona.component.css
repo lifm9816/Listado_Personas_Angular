@@ -1,0 +1,13 @@
+.btn-info
+{
+    background-color: #0C96BA;
+    border: none;
+    color: #ffffff;
+    transition: 1s ease-in;
+}
+
+.btn-info:hover
+{
+    background-color: #0C96BA;
+    color: #FFFFFF;
+}

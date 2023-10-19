@@ -1,14 +1,16 @@
-import { Component, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Persona } from '../persona.model';
+import { LoggingService } from '../LoggingService.service';
+import { PersonaService } from '../Persona.service';
 
 @Component({
   selector: 'app-formulario',
   templateUrl: './formulario.component.html',
-  styleUrls: ['./formulario.component.css']
+  styleUrls: ['./formulario.component.css'],
 })
 export class FormularioComponent {
 
-  @Output() personaCreada = new EventEmitter<Persona>();
+
 
   /*Con 2 way binding
   //nombreInput: string = "";
@@ -45,12 +47,20 @@ export class FormularioComponent {
 
   */
 
+  constructor(private loggingService: LoggingService,
+    private PersonaService: PersonaService){
+      this.PersonaService.saludar.subscribe(
+      (indice: number) => alert("El índice es " + indice)
+    );}
+
   @ViewChild("nombreInput") nombreInput: ElementRef;
   @ViewChild("apellidoInput") apellidoInput: ElementRef;
 
   //Con referencias locales
   agregarPersona(){
     let persona = new Persona(this.nombreInput.nativeElement.value, this.apellidoInput.nativeElement.value);
-    this.personaCreada.emit(persona);
+    //this.loggingService.enviarMensajeConsola("Enviamos persona: " + persona.nombre + " " + persona.apellido);
+    //this.personaCreada.emit(persona);
+    this.PersonaService.agregarPersona(persona);
   }
 }

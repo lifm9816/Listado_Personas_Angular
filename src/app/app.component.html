@@ -1,7 +1,7 @@
 <div class="container">
   <h3> {{title}} </h3>
   <hr>
-  <app-formulario (personaCreada)="personaAgregada($event)" ></app-formulario>
+  <app-formulario ></app-formulario>
   <hr>
   <app-persona *ngFor = "let personaElemento of personas; let i = index" 
     [persona] = "personaElemento"
